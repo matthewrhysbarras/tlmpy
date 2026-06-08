@@ -8,3 +8,9 @@ TLMpy is an experimental Python package for scalar 2D TLM-style wave simulation 
 - [Benchmarking](benchmarking.md)
 - [Example gallery](example_gallery.md)
 - [Roadmap](roadmap.md)
+
+Design notes:
+
+- [Benchmarking against references](design/benchmarking_against_references.md)
+- [Meep comparison feasibility](design/meep_comparison_feasibility.md)
+- [Python fdtd comparison feasibility](design/fdtd_comparison_feasibility.md)
