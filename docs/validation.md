@@ -8,8 +8,33 @@ Obstacle validation is limited to documented v0.1 behavior: circular mask constr
 
 Tolerances are intentionally stated in tests and should be tightened only after dispersion characterization.
 
+## Validation Planning Documents
+
 Additional validation planning documents:
 
-- `docs/validation_checklist.md`
-- `docs/design/dispersion_characterisation.md`
-- `docs/design/boundary_characterisation.md`
+- [Validation checklist](validation_checklist.md)
+- [Dispersion characterisation design](design/dispersion_characterisation.md)
+- [Boundary-condition characterisation design](design/boundary_characterisation.md)
+- [Stub-loaded heterogeneous 2D TLM design](design/stub_loaded_2d_tlm.md)
+
+## v0.2 Heterogeneous TLM Validation Plan
+
+Stub-loaded heterogeneous 2D TLM is future design work. No public heterogeneous
+solver is implemented yet. A future solver must pass validation before it becomes
+public API. Required cases:
+
+1. Homogeneous limit: the loaded formulation must match v0.1 `ScalarWaveTLM2D`
+   for a constant wave speed.
+2. Interface reflection/transmission: a 1D or quasi-1D interface should match an
+   analytical coefficient where available.
+3. Two-media travel time: measured arrival should match the sum of segment travel
+   times through each medium within a dispersion-aware tolerance.
+4. Energy/passivity: closed reflective domains should not exhibit unphysical
+   growth.
+5. Stability sweep: test wave-speed contrast, timestep safety factor, and
+   interface placement.
+6. External reference: compare at least one simple case against an analytical
+   solution or established solver if feasible.
+
+Obstacle-mask tests do not satisfy these heterogeneous-media requirements. The
+stub-loaded formulation needs its own validation suite.
