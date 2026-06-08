@@ -51,6 +51,11 @@ Candidate references:
   scalar quantity and boundary setup can be matched honestly.
 - Published analytical TLM dispersion or interface results, where available.
 
+Feasibility notes:
+
+- [Meep comparison feasibility](meep_comparison_feasibility.md)
+- [Python fdtd comparison feasibility](fdtd_comparison_feasibility.md)
+
 Do not add Meep or `fdtd` as core dependencies. Any comparison scripts should
 live outside the import path, document optional installation steps, and skip
 cleanly when optional tools are unavailable.
@@ -97,11 +102,13 @@ metrics.
 
 Suggested follow-up issues:
 
-1. Add boundary reflection and passivity benchmark refinements.
-2. Add optional Meep comparison feasibility study.
-3. Add optional `fdtd` comparison feasibility study.
-4. Add benchmark result documentation page.
-5. Convert additional validation tests into documented benchmark cases.
+1. Define one candidate external-comparison benchmark case before adding any
+   external solver dependency.
+2. Convert additional validation tests into documented benchmark cases.
+3. Collect published analytical TLM references for dispersion and boundary
+   behavior.
+4. Decide whether Meep or `fdtd` should proceed after the feasibility gates are
+   satisfied.
 
 ## Open Questions
 
