@@ -1,12 +1,12 @@
 # Benchmarking
 
-TLMpy includes a lightweight JSON-friendly benchmark result schema for future
-validation and reference-comparison work. It is infrastructure only: benchmark
-scripts and external solver comparisons are not yet implemented.
+TLMpy includes a lightweight JSON-friendly benchmark result schema and a small
+set of deterministic benchmark scripts for current homogeneous v0.1 behavior.
+External solver comparisons are not yet implemented.
 
 ## Purpose
 
-The schema gives future benchmark scripts a stable way to store metadata,
+The schema gives benchmark scripts a stable way to store metadata,
 parameters, scalar metrics, tolerances and artifact paths. It supports
 reproducible validation planning without adding external dependencies.
 
@@ -48,7 +48,7 @@ result = make_benchmark_result(
     parameters={"source": "RickerPulse"},
     metrics={"relative_speed_error": 0.03},
     tolerances={"relative_speed_error": 0.10},
-    notes="Example metadata only; benchmark scripts are future work.",
+    notes="Example metadata only; choose tolerances for each benchmark case.",
 )
 
 result.to_json("benchmark_result.json")
@@ -57,7 +57,6 @@ loaded = result.from_json("benchmark_result.json")
 
 ## What This Does Not Do
 
-- It does not run benchmarks.
 - It does not validate TLMpy against external solvers.
 - It does not add Meep or `fdtd` dependencies.
 - It does not implement heterogeneous media.
@@ -87,3 +86,16 @@ python benchmarks/analytical_travel_time.py
 
 This benchmark checks the existing homogeneous mesh-speed relation only. It does
 not validate heterogeneous media, PML, or external-solver agreement.
+
+`benchmarks/boundary_reflection.py` runs a deterministic source-free boundary
+behavior benchmark and writes
+`outputs/benchmarks/boundary_reflection.json`.
+
+```bash
+python benchmarks/boundary_reflection.py
+```
+
+This benchmark records reflective-domain port-energy conservation and matched
+boundary energy loss for the same initial port state. It characterises the
+current first-order matched termination for this setup only. It is not a PML
+test and does not estimate a general reflection coefficient.
