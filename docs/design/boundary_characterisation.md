@@ -41,6 +41,12 @@ for case 4 and records matched-boundary energy loss for the same initial state.
 It is a reproducibility benchmark for current behavior, not a complete boundary
 reflection-characterisation suite.
 
+`benchmarks/boundary_reflection_magnitude.py` implements an initial
+normal-incidence source/probe benchmark for case 1. It compares peak amplitudes
+in fixed incident and reflected time windows for reflective and first-order
+matched terminations. The reported ratio is setup-specific and should not be
+treated as a general reflection coefficient.
+
 For each case, record:
 
 - boundary type and coefficient;

@@ -135,6 +135,40 @@ Limitations:
 - it is not a PML test;
 - it does not estimate a general reflection coefficient.
 
+### Boundary Reflection Magnitude
+
+This benchmark records a setup-specific normal-incidence reflection-magnitude
+comparison for reflective and first-order matched terminations.
+
+```bash
+python benchmarks/boundary_reflection_magnitude.py
+```
+
+Output:
+
+- `outputs/benchmarks/boundary_reflection_magnitude.json`
+
+What it measures:
+
+- incident peak amplitude at one probe between a source and the left boundary;
+- reflected peak amplitude in a later expected reflection window;
+- reflected-to-incident peak-amplitude ratio for reflective and matched
+  boundaries;
+- the matched ratio relative to the reflective ratio for the same geometry.
+
+Current tolerances:
+
+- `reflective_reflection_ratio >= 0.30`;
+- `matched_to_reflective_ratio <= 0.35`.
+
+Limitations:
+
+- the metric is tied to this source, probe, grid and time-window setup;
+- it is not a general reflection coefficient;
+- it does not characterise oblique incidence, corners or broadband boundary
+  behavior;
+- it is not a PML test and does not claim full absorption.
+
 ## Reading Results
 
 Benchmark JSON files can be loaded with:
