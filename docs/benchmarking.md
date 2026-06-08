@@ -74,3 +74,16 @@ loaded = result.from_json("benchmark_result.json")
 
 The broader benchmark plan is in
 `docs/design/benchmarking_against_references.md`.
+
+## Implemented Benchmarks
+
+`benchmarks/analytical_travel_time.py` runs a deterministic homogeneous
+scalar-wave travel-time benchmark and writes
+`outputs/benchmarks/analytical_travel_time.json`.
+
+```bash
+python benchmarks/analytical_travel_time.py
+```
+
+This benchmark checks the existing homogeneous mesh-speed relation only. It does
+not validate heterogeneous media, PML, or external-solver agreement.
