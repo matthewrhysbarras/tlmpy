@@ -169,6 +169,39 @@ Limitations:
   behavior;
 - it is not a PML test and does not claim full absorption.
 
+### Dispersion Characterisation
+
+This benchmark records an initial direction-dependent group-speed check for the
+existing homogeneous scalar-wave solver.
+
+```bash
+python benchmarks/dispersion_characterisation.py
+```
+
+Output:
+
+- `outputs/benchmarks/dispersion_characterisation.json`
+
+What it measures:
+
+- two-probe cross-correlation speed estimates along `x`, `y` and diagonal
+  directions;
+- maximum relative speed error against `dx / (dt * sqrt(2))`;
+- relative spread between measured directional speeds.
+
+Current tolerances:
+
+- `max_relative_error <= 0.10`;
+- `directional_spread_relative <= 0.03`.
+
+Limitations:
+
+- this is a CI-friendly group-speed directionality benchmark;
+- it does not measure phase velocity;
+- it does not sweep wavelength;
+- it does not replace a full dispersion-characterisation notebook or analytical
+  TLM dispersion comparison.
+
 ## Reading Results
 
 Benchmark JSON files can be loaded with:
