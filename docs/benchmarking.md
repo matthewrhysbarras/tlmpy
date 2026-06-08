@@ -76,26 +76,89 @@ The broader benchmark plan is in
 
 ## Implemented Benchmarks
 
-`benchmarks/analytical_travel_time.py` runs a deterministic homogeneous
-scalar-wave travel-time benchmark and writes
-`outputs/benchmarks/analytical_travel_time.json`.
+The current benchmark scripts are deterministic, use the NumPy backend, and
+write `BenchmarkResult` JSON files under `outputs/benchmarks/`.
+
+### Analytical Travel Time
 
 ```bash
 python benchmarks/analytical_travel_time.py
 ```
 
-This benchmark checks the existing homogeneous mesh-speed relation only. It does
-not validate heterogeneous media, PML, or external-solver agreement.
+Output:
 
-`benchmarks/boundary_reflection.py` runs a deterministic source-free boundary
-behavior benchmark and writes
-`outputs/benchmarks/boundary_reflection.json`.
+- `outputs/benchmarks/analytical_travel_time.json`
+
+What it measures:
+
+- propagation speed between two probes in a homogeneous scalar-wave mesh;
+- comparison against the mesh-speed relation `dx / (dt * sqrt(2))`;
+- relative speed error using a cross-correlation arrival estimator.
+
+Current tolerance:
+
+- `relative_error <= 0.10`.
+
+Limitations:
+
+- the tolerance accounts for numerical dispersion and finite source bandwidth;
+- this checks homogeneous mesh-speed behavior only;
+- it does not validate heterogeneous media, PML or external-solver agreement.
+
+### Boundary Reflection
+
+This benchmark records source-free boundary behavior for the current homogeneous
+solver.
 
 ```bash
 python benchmarks/boundary_reflection.py
 ```
 
-This benchmark records reflective-domain port-energy conservation and matched
-boundary energy loss for the same initial port state. It characterises the
-current first-order matched termination for this setup only. It is not a PML
-test and does not estimate a general reflection coefficient.
+Output:
+
+- `outputs/benchmarks/boundary_reflection.json`
+
+What it measures:
+
+- reflective-domain conservation of total four-port energy;
+- matched-boundary energy loss for the same deterministic initial port state.
+
+Current tolerances:
+
+- `reflective_relative_energy_change <= 1e-12`;
+- `matched_energy_ratio <= 0.95`.
+
+Limitations:
+
+- this is a source-free boundary behavior benchmark;
+- it characterises the current first-order matched termination for one setup;
+- it is not a PML test;
+- it does not estimate a general reflection coefficient.
+
+## Reading Results
+
+Benchmark JSON files can be loaded with:
+
+```python
+from tlmpy.benchmarking import BenchmarkResult
+
+result = BenchmarkResult.from_json("outputs/benchmarks/analytical_travel_time.json")
+print(result.metrics)
+```
+
+Each result records the package version, backend, grid shape, grid spacing,
+timestep, step count, benchmark parameters, scalar metrics and tolerances. The
+JSON files are intended for reproducible local runs and future documentation
+assets; they are not proof of production validation.
+
+## Adding New Benchmarks
+
+New benchmark scripts should:
+
+- use deterministic parameters and seeds where applicable;
+- write a `BenchmarkResult` JSON summary;
+- document the governing behavior being checked;
+- state tolerances explicitly;
+- avoid optional external dependencies unless they are isolated and skipped
+  cleanly;
+- avoid claims about unimplemented physics.
