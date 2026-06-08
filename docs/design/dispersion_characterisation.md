@@ -68,6 +68,12 @@ The study should produce:
 - a note describing cases where the solver should not be used without further
   validation.
 
+`benchmarks/dispersion_characterisation.py` implements an initial CI-friendly
+directionality benchmark for the existing homogeneous solver. It measures
+two-probe cross-correlation speed estimates along `x`, `y` and diagonal
+directions. This is a first benchmark artifact, not the full wavelength-resolved
+phase/group velocity study described above.
+
 ## Open Questions
 
 - Which estimator should be canonical for CI tests?
