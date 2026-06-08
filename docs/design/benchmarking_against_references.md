@@ -30,6 +30,10 @@ These are already partly covered by tests. A benchmark suite should turn them
 into reproducible, documented reference runs with fixed parameters and stored
 summary metrics.
 
+The first concrete benchmark is `benchmarks/analytical_travel_time.py`, which
+records a homogeneous scalar-wave travel-time result using the `BenchmarkResult`
+schema. It validates the homogeneous mesh-speed relation only.
+
 ## External Solver Comparisons
 
 External comparisons should be optional and isolated from core tests.
