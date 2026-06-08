@@ -46,6 +46,13 @@ Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundar
 
 TLMpy includes a lightweight JSON-friendly benchmark result schema in `tlmpy.benchmarking` to support reproducible validation work. Current benchmark scripts cover homogeneous travel time and a source-free boundary behavior case. External solver comparisons remain planned future work.
 
+## Examples
+
+Examples live in `examples/`, with a reproducible command gallery in
+`docs/example_gallery.md`. They cover current homogeneous scalar wave behavior,
+approximate reflective obstacle masks, the finite-difference diffusion reference
+solver and optional backend timing.
+
 Roadmap highlights include stub-loaded heterogeneous nodes, dispersion and boundary characterization, and reproducible sensing demos.
 
 Please cite TLMpy using `CITATION.cff`. License: BSD-3-Clause.
