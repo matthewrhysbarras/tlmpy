@@ -4,9 +4,9 @@ This design note defines how TLMpy should compare existing and future solvers
 against analytical references or established tools. It does not add benchmark
 code, dependencies, or claims of agreement.
 
-TLMpy now provides a lightweight `BenchmarkResult` schema for future benchmark
-outputs. This is metadata infrastructure only; the benchmark scripts and external
-solver comparisons described here remain future work.
+TLMpy now provides a lightweight `BenchmarkResult` schema for benchmark outputs.
+Initial benchmark scripts cover homogeneous travel time and source-free boundary
+behavior. External solver comparisons described here remain future work.
 
 ## Goals
 
@@ -30,9 +30,14 @@ These are already partly covered by tests. A benchmark suite should turn them
 into reproducible, documented reference runs with fixed parameters and stored
 summary metrics.
 
-The first concrete benchmark is `benchmarks/analytical_travel_time.py`, which
-records a homogeneous scalar-wave travel-time result using the `BenchmarkResult`
-schema. It validates the homogeneous mesh-speed relation only.
+The first concrete benchmarks are:
+
+- `benchmarks/analytical_travel_time.py`, which records a homogeneous scalar-wave
+  travel-time result using the `BenchmarkResult` schema. It validates the
+  homogeneous mesh-speed relation only.
+- `benchmarks/boundary_reflection.py`, which records source-free reflective
+  energy conservation and matched-boundary energy loss for one deterministic
+  setup. It does not claim that the matched termination is a full absorber.
 
 ## External Solver Comparisons
 
@@ -92,12 +97,11 @@ metrics.
 
 Suggested follow-up issues:
 
-1. Define a reference-result schema for benchmark outputs.
-2. Convert existing validation tests into documented benchmark cases.
-3. Add optional analytical scalar-wave travel-time benchmark script.
-4. Add optional Meep comparison feasibility study.
-5. Add optional `fdtd` comparison feasibility study.
-6. Add benchmark result documentation page.
+1. Add boundary reflection and passivity benchmark refinements.
+2. Add optional Meep comparison feasibility study.
+3. Add optional `fdtd` comparison feasibility study.
+4. Add benchmark result documentation page.
+5. Convert additional validation tests into documented benchmark cases.
 
 ## Open Questions
 

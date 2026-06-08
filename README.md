@@ -44,7 +44,7 @@ Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundar
 
 ## Benchmark Infrastructure
 
-TLMpy includes a lightweight JSON-friendly benchmark result schema in `tlmpy.benchmarking` to support future reproducible validation work. Benchmark scripts and external comparisons are planned; they are not implemented in v0.1.1.
+TLMpy includes a lightweight JSON-friendly benchmark result schema in `tlmpy.benchmarking` to support reproducible validation work. Current benchmark scripts cover homogeneous travel time and a source-free boundary behavior case. External solver comparisons remain planned future work.
 
 Roadmap highlights include stub-loaded heterogeneous nodes, dispersion and boundary characterization, and reproducible sensing demos.
 

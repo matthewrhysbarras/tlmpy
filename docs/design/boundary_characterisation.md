@@ -36,6 +36,11 @@ Measure, document, and regression-test:
 4. Reflective closed box with random port initial conditions and no source.
 5. Corner reflection case with probes near both adjacent walls.
 
+`benchmarks/boundary_reflection.py` implements an initial source-free benchmark
+for case 4 and records matched-boundary energy loss for the same initial state.
+It is a reproducibility benchmark for current behavior, not a complete boundary
+reflection-characterisation suite.
+
 For each case, record:
 
 - boundary type and coefficient;
