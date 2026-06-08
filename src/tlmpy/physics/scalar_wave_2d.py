@@ -18,6 +18,16 @@ class ScalarWaveTLM2D:
     The mesh speed is fixed by ``c = dx / (dt * sqrt(2))``. This solver accepts a
     single homogeneous ``wave_speed`` and computes ``dt`` internally; it does not
     model heterogeneous media.
+
+    The port arrays ``n``, ``s``, ``e`` and ``w`` are directional link-line
+    amplitudes stored as separate ``(nx, ny)`` float64 arrays. Point-source values
+    are evaluated at ``step * dt`` and split equally across the four ports at the
+    integer ``(i, j)`` source index. The scalar field returned to probes and plots
+    is ``0.5 * (n + s + e + w)``.
+
+    ``boundary="matched"`` is a first-order link termination, not a PML. Obstacle
+    masks are approximate reflective geometry masks, not material interfaces or
+    heterogeneous wave-speed media.
     """
 
     def __init__(self, grid: Grid2D, wave_speed: float = 1500.0, backend: str | None = "numpy", boundary="matched", obstacles=None):

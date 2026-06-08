@@ -34,8 +34,12 @@ class RickerPulse:
 
 @dataclass(frozen=True)
 class PointSource2D:
-    """Point source at integer ``(i, j)`` grid index; injected equally into four ports."""
+    """Point source at integer ``(i, j)`` grid index.
+
+    ``i`` indexes the first grid axis and ``j`` indexes the second. The wave
+    solver evaluates ``signal.value(step * dt)`` in seconds and injects one
+    quarter of that amplitude into each of the four directional ports.
+    """
 
     location: tuple[int, int]
     signal: GaussianPulse | RickerPulse
-
