@@ -15,6 +15,7 @@ Additional validation planning documents:
 - [Validation checklist](validation_checklist.md)
 - [Dispersion characterisation design](design/dispersion_characterisation.md)
 - [Boundary-condition characterisation design](design/boundary_characterisation.md)
+- [Benchmarking against references design](design/benchmarking_against_references.md)
 - [Stub-loaded heterogeneous 2D TLM design](design/stub_loaded_2d_tlm.md)
 
 ## v0.2 Heterogeneous TLM Validation Plan
