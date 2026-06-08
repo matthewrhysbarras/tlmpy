@@ -7,3 +7,9 @@ The propagation-based wave-speed test uses two probes and cross-correlation. Its
 Obstacle validation is limited to documented v0.1 behavior: circular mask construction, finite fields, propagation changes relative to no obstacle, and no unbounded port-energy growth under reflective conditions. These tests do not claim material-interface accuracy.
 
 Tolerances are intentionally stated in tests and should be tightened only after dispersion characterization.
+
+Additional validation planning documents:
+
+- `docs/validation_checklist.md`
+- `docs/design/dispersion_characterisation.md`
+- `docs/design/boundary_characterisation.md`
