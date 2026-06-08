@@ -42,6 +42,10 @@ Limitations: the 2D TLM mesh speed is fixed by `c = dx / (dt * sqrt(2))`; `dt` i
 
 Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundaries, propagation-based mesh-speed regression, Gaussian diffusion, Neumann mass conservation, result round trips, and CLI behavior.
 
+## Benchmark Infrastructure
+
+TLMpy includes a lightweight JSON-friendly benchmark result schema in `tlmpy.benchmarking` to support future reproducible validation work. Benchmark scripts and external comparisons are planned; they are not implemented in v0.1.1.
+
 Roadmap highlights include stub-loaded heterogeneous nodes, dispersion and boundary characterization, and reproducible sensing demos.
 
 Please cite TLMpy using `CITATION.cff`. License: BSD-3-Clause.

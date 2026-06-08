@@ -13,6 +13,7 @@ Tolerances are intentionally stated in tests and should be tightened only after 
 Additional validation planning documents:
 
 - [Validation checklist](validation_checklist.md)
+- [Benchmarking](benchmarking.md)
 - [Dispersion characterisation design](design/dispersion_characterisation.md)
 - [Boundary-condition characterisation design](design/boundary_characterisation.md)
 - [Benchmarking against references design](design/benchmarking_against_references.md)

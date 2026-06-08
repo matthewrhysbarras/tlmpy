@@ -4,6 +4,10 @@ This design note defines how TLMpy should compare existing and future solvers
 against analytical references or established tools. It does not add benchmark
 code, dependencies, or claims of agreement.
 
+TLMpy now provides a lightweight `BenchmarkResult` schema for future benchmark
+outputs. This is metadata infrastructure only; the benchmark scripts and external
+solver comparisons described here remain future work.
+
 ## Goals
 
 - Build confidence in implemented behavior through independent reference cases.
@@ -75,6 +79,7 @@ metrics.
 - Save machine-readable metrics, such as JSON or NPZ.
 - Record package version, backend, grid size, timestep, and optional dependency
   versions.
+- Prefer `tlmpy.benchmarking.BenchmarkResult` for JSON summary files.
 - Keep generated artifacts out of the repository unless they are small,
   intentionally curated documentation assets.
 - Prefer scripts that can be run from the repository root.
