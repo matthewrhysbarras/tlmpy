@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tlmpy"
+version = "0.1.0"
+description = "Python-first scalar TLM-style wave simulation and diffusion validation tools."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+authors = [{ name = "TLMpy contributors" }]
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+viz = ["matplotlib"]
+cuda = ["cupy"]
+dev = ["pytest", "pytest-cov", "ruff", "build", "twine"]
+docs = ["mkdocs", "mkdocs-material"]
+
+[project.scripts]
+tlmpy = "tlmpy.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tlmpy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+

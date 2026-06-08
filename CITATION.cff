@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use TLMpy, please cite it."
+title: "TLMpy"
+version: "0.1.0"
+license: "BSD-3-Clause"
+authors:
+  - family-names: "Placeholder"
+    given-names: "Author"
+
