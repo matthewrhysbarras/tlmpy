@@ -36,11 +36,12 @@ result = solver.run(steps=100, dt=0.9 * solver.stable_dt(), store_final_field=Tr
 
 Backends are thin: NumPy is core, CuPy is optional through `tlmpy[cuda]`.
 
-Limitations: the 2D TLM mesh speed is fixed by `c = dx / (dt * sqrt(2))`; `dt` is computed from `wave_speed`, not supplied. Matched boundaries are first-order terminations. Obstacles are reflective geometry only. There is no heterogeneous medium and no PML in v0.1.
+The scalar wave solver stores four directional port arrays named `n`, `s`, `e`, and `w`, each with shape `(nx, ny)`. Source and probe locations use integer grid indices `(i, j)`, where `i` is the first array axis and `j` is the second. A point source is evaluated as `signal.value(step * dt)` and split equally into the four ports. The scalar field used for probes and plots is `0.5 * (n + s + e + w)`.
 
-Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundaries, mesh-speed regression, Gaussian diffusion, and Neumann mass conservation.
+Limitations: the 2D TLM mesh speed is fixed by `c = dx / (dt * sqrt(2))`; `dt` is computed from `wave_speed`, not supplied. Matched boundaries are first-order link terminations, not PML or full absorbing boundary conditions. Obstacles are approximate reflective geometry masks only, not refractive materials or resolved interfaces. There is no heterogeneous medium and no PML in v0.1.
+
+Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundaries, propagation-based mesh-speed regression, Gaussian diffusion, Neumann mass conservation, result round trips, and CLI behavior.
 
 Roadmap highlights include stub-loaded heterogeneous nodes, dispersion and boundary characterization, and reproducible sensing demos.
 
 Please cite TLMpy using `CITATION.cff`. License: BSD-3-Clause.
-
