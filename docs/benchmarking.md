@@ -202,6 +202,39 @@ Limitations:
 - it does not replace oblique-incidence or corner characterization;
 - it is not a PML test and does not define general reflection behavior.
 
+### Boundary Oblique Path
+
+This benchmark sweeps the existing scalar boundary reflection coefficient for a
+point-source/probe setup whose expected left-boundary return path is oblique.
+
+```bash
+python benchmarks/boundary_oblique_path.py
+```
+
+Output:
+
+- `outputs/benchmarks/boundary_oblique_path.json`
+
+What it measures:
+
+- direct peak amplitude at one probe after a source pulse;
+- later left-boundary return peak amplitude estimated with an image-source path;
+- returned-to-direct peak-amplitude ratio for coefficients `0.0`, `0.25`,
+  `0.5`, `0.75` and `1.0`;
+- monotonicity of that setup-specific ratio across the coefficient sweep.
+
+Current tolerance:
+
+- `ratio_span >= 0.35`, with monotonic ratios required.
+
+Limitations:
+
+- this is a point-source oblique-path metric, not a plane-wave reflection
+  coefficient;
+- the metric is tied to this source, probe, grid and time-window setup;
+- it is not a PML test and does not define general angle-dependent reflection
+  behavior.
+
 ### Boundary Corner Behaviour
 
 This benchmark records a setup-specific lower-left corner-return metric for
