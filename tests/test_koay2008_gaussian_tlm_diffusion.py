@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 
+import pytest
+
 from tlmpy._version import __version__
 from tlmpy.benchmarking import BenchmarkResult
 
@@ -15,9 +17,8 @@ SPEC.loader.exec_module(koay2008_gaussian_tlm_diffusion)
 
 def test_koay2008_gaussian_tlm_diffusion_stage1_benchmark(tmp_path):
     output = tmp_path / "koay2008_gaussian_tlm_diffusion.json"
-    figure_dir = tmp_path / "figures"
 
-    result = koay2008_gaussian_tlm_diffusion.run_benchmark(output, figure_dir=figure_dir)
+    result = koay2008_gaussian_tlm_diffusion.run_benchmark(output, figure_dir=None)
     loaded = BenchmarkResult.from_json(output)
 
     assert output.exists()
@@ -44,6 +45,17 @@ def test_koay2008_gaussian_tlm_diffusion_stage1_benchmark(tmp_path):
     assert loaded.metrics["mass_relative_change"] <= loaded.tolerances["mass_relative_change"]
     assert loaded.metrics["passed"] is True
     assert loaded.artifacts["result_json"] == str(output)
+
+
+def test_koay2008_gaussian_tlm_diffusion_figure_generation(tmp_path):
+    pytest.importorskip("matplotlib")
+    output = tmp_path / "koay2008_gaussian_tlm_diffusion.json"
+    figure_dir = tmp_path / "figures"
+
+    result = koay2008_gaussian_tlm_diffusion.run_benchmark(output, figure_dir=figure_dir)
+    loaded = BenchmarkResult.from_json(output)
+
+    assert loaded == result
     for key in [
         "gaussian_initial_profile",
         "centre_node_transient",
