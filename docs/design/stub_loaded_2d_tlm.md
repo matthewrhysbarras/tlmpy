@@ -151,6 +151,57 @@ answer:
 
 PML remains out of scope.
 
+## Source And Boundary Treatment Design Gates
+
+Loaded-node source and boundary handling must be designed before implementation.
+The v0.1 rule of splitting a point-source amplitude equally across four link
+ports may not preserve the intended normalization when local stub storage is
+present.
+
+### Source Injection
+
+A future design must decide whether point-source amplitude is injected into:
+
+- link ports only;
+- stub state only;
+- a weighted combination of link ports and stub state.
+
+Required source-injection gates:
+
+- homogeneous loaded/unloaded limit reproduces v0.1 source behavior within a
+  stated tolerance;
+- source energy does not depend discontinuously on local loading coefficient;
+- source normalization near material interfaces is documented;
+- probe scalar field convention is documented for loaded nodes;
+- regression tests cover at least one source in a fast region, one in a slow
+  region and one near an interface.
+
+Until those gates exist, source handling remains unresolved design work.
+
+### Reflective Boundaries
+
+A future reflective boundary rule must define how link-port reflection interacts
+with local stub state at boundary-adjacent nodes.
+
+Required reflective-boundary gates:
+
+- closed-domain passive/energy behavior is tested without sources;
+- boundary-adjacent stub state does not create gain;
+- reflective behavior is tested for homogeneous and loaded cases;
+- corner behavior is explicitly tested.
+
+### First-Order Matched Boundaries
+
+The v0.1 `matched` boundary is a first-order link termination. For loaded edge
+nodes, `Gamma = 0` may no longer represent the same effective impedance.
+
+Required matched-boundary gates:
+
+- document whether `Gamma = 0` is retained as a numerical link termination only;
+- measure reflection/leakage for at least one loaded homogeneous case;
+- compare matched and reflective behavior without claiming full absorption;
+- keep PML out of scope unless a separate validated formulation is added later.
+
 ## Proposed Minimal API
 
 This API is a design target only. It should not be added to `tlmpy` until the
@@ -181,6 +232,51 @@ API constraints:
 - `StubLoadedScalarWaveTLM2D` computes or validates a global `dt`.
 - The homogeneous limit must reproduce v0.1 behavior within a stated tolerance.
 - The class must be marked experimental until validation is complete.
+
+## API Acceptance Gates
+
+No heterogeneous public API should be added until all gates below are satisfied.
+
+### `WaveSpeedMap2D` Gate
+
+A future `WaveSpeedMap2D` candidate must define and test:
+
+- association with exactly one `Grid2D`;
+- shape equality with `grid.shape`;
+- finite positive wave-speed values;
+- rejection of zero, negative, NaN and infinite speeds;
+- explicit copy/array semantics so user mutation does not silently change an
+  active solver unless that behavior is deliberately documented;
+- helper constructors only after raw array validation is tested.
+
+This type should be data validation only. It should not imply that heterogeneous
+TLM physics is already implemented.
+
+### `StubLoadedScalarWaveTLM2D` Gate
+
+A future solver candidate may become public experimental API only after:
+
+- the loaded-node scatter equations are derived and reviewed;
+- the local loading coefficient relation is documented;
+- passive parameter bounds are stated;
+- the global timestep rule is documented and tested;
+- homogeneous-limit tests compare against v0.1 `ScalarWaveTLM2D`;
+- interface, two-media travel-time, passivity and stability tests exist;
+- documentation states that the solver is experimental and not PML, EM, clinical,
+  radar, ultrasound or production software.
+
+### Documentation Warning Gate
+
+Any initial public API documentation must include:
+
+- "experimental";
+- "requires validation for each use case";
+- "obstacle masks are not material interfaces";
+- "matched boundaries are first-order terminations, not PML";
+- "do not use `ScalarWaveTLM2D` for heterogeneous media".
+
+If those warnings feel too strong for the implementation, the implementation is
+not ready to be public API.
 
 ## Validation Plan
 
