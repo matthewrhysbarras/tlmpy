@@ -16,6 +16,10 @@ pip install -e ".[dev,viz]"
 Generated files are written under `outputs/`. They are local artifacts and are
 not required for normal package use.
 
+Curated PNG snapshots for the current examples are stored in
+`docs/assets/gallery/`. They are illustrative outputs from the commands below,
+not validation evidence.
+
 ## Scalar Wave Pulse
 
 ```bash
@@ -27,6 +31,11 @@ with a first-order matched termination. It writes:
 
 - `outputs/scalar_wave_pulse.npz`;
 - `outputs/scalar_wave_pulse.png`.
+
+![Scalar wave pulse final field](assets/gallery/scalar_wave_pulse.png)
+
+Caption: final scalar field snapshot for a homogeneous pulse example with a
+first-order matched termination.
 
 What it demonstrates:
 
@@ -49,6 +58,11 @@ python examples/02_scalar_wave_obstacle.py
 This example uses a circular obstacle mask in the existing homogeneous scalar
 wave solver and writes `outputs/scalar_wave_obstacle.png`.
 
+![Reflective obstacle final field](assets/gallery/scalar_wave_obstacle.png)
+
+Caption: qualitative final scalar field for an approximate reflective obstacle
+mask. The obstacle is not a refractive material interface.
+
 What it demonstrates:
 
 - a geometric reflective mask inside the computational domain;
@@ -68,6 +82,11 @@ python examples/03_thermal_diffusion_slab.py
 
 This example runs the finite-difference diffusion reference solver from a hot
 square initial condition and writes `outputs/thermal_diffusion_slab.png`.
+
+![Thermal diffusion final field](assets/gallery/thermal_diffusion_slab.png)
+
+Caption: final field from the finite-difference diffusion reference solver. This
+is not a TLM diffusion method.
 
 What it demonstrates:
 
