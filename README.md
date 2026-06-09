@@ -58,3 +58,6 @@ solver and optional backend timing.
 Roadmap highlights include stub-loaded heterogeneous nodes, dispersion and boundary characterization, and reproducible sensing demos.
 
 Please cite TLMpy using `CITATION.cff`. License: BSD-3-Clause.
+
+Current capabilities and limitations are summarized in
+`docs/project_status.md`.
