@@ -79,6 +79,9 @@ bandwidth sweep for `x` and diagonal propagation. It still uses two-probe
 cross-correlation, so it should be read as a coarse group-speed regression rather
 than a phase-velocity dispersion measurement.
 
+Current benchmark results and a documentation plot are summarized in
+[`docs/dispersion_characterisation.md`](../dispersion_characterisation.md).
+
 ## Open Questions
 
 - Which estimator should be canonical for CI tests?
