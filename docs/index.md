@@ -9,6 +9,7 @@ TLMpy is an experimental Python package for scalar 2D TLM-style wave simulation 
 - [Boundary characterisation](boundary_characterisation.md)
 - [Dispersion characterisation](dispersion_characterisation.md)
 - [Example gallery](example_gallery.md)
+- [TLM reference inventory](reference_inventory.md)
 - [Roadmap](roadmap.md)
 
 Design notes:
