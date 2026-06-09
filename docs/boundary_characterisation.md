@@ -87,6 +87,36 @@ Interpretation:
 - this supports regression testing of the existing coefficient API;
 - it does not characterize all waveforms, incidence angles or corner behavior.
 
+## Oblique-Path Boundary Behaviour
+
+Command:
+
+```bash
+python benchmarks/boundary_oblique_path.py
+```
+
+Current benchmark output:
+
+- `Gamma = 0.0`: ratio `0.147283`;
+- `Gamma = 0.25`: ratio `0.288655`;
+- `Gamma = 0.5`: ratio `0.417412`;
+- `Gamma = 0.75`: ratio `0.535910`;
+- `Gamma = 1.0`: ratio `0.644194`;
+- ratio span: `0.496910`;
+- pass criteria:
+  - ratios are monotonic across this coefficient sweep;
+  - `ratio_span >= 0.35`.
+
+Interpretation:
+
+- for this point-source/probe setup, the expected left-boundary return path is
+  oblique and the measured return ratio increases monotonically with the scalar
+  boundary coefficient;
+- the return window is estimated from a simple image-source path length across
+  the left boundary;
+- this is not a plane-wave reflection coefficient and does not establish general
+  angle-dependent boundary behavior.
+
 ## Corner Boundary Behaviour
 
 Command:
@@ -117,11 +147,9 @@ Interpretation:
 
 Still uncharacterized:
 
-- oblique-incidence boundary reflection;
 - broadband sensitivity;
 - published analytical boundary-reference comparison.
 
 Tracked follow-up issues:
 
-- #40: oblique-incidence boundary benchmark;
 - #43: published TLM or analytical reference benchmark cases.
