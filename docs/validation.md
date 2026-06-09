@@ -11,10 +11,15 @@ source-free boundary behavior case. The boundary benchmark demonstrates
 reflective port-energy conservation and matched-boundary energy loss for one
 deterministic setup; it does not claim a full absorbing boundary condition.
 
-The Koay 2008 Gaussian diffusion case-study benchmark currently validates only
-the existing finite-difference diffusion reference solver against an analytical
-Gaussian diffusion solution. It does not validate parabolic TLM pulse scattering
-or the nodal state estimator.
+The Koay 2008 Gaussian diffusion case-study benchmark now includes an
+experimental parabolic link-plus-stub pulse-state prototype and estimator
+feedback under `tlmpy.experimental`. It is a partial reproduction path only:
+the FTCS reference and equal-pulse parabolic node match the analytical Gaussian
+case closely for the selected setup. Because that setup has `Ys = 0`, the
+equal-pulse parabolic node is expected to match the FTCS update and is not
+independent validation. The estimator feedback reports non-convergence against
+the strict benchmark tolerance and still requires independent review before it
+can be called a full reproduction of the paper.
 
 Tolerances are intentionally stated in tests and should be tightened only after dispersion characterization.
 

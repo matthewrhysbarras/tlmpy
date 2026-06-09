@@ -349,14 +349,21 @@ What it measures:
 
 - the existing FTCS diffusion reference solver against the Gaussian analytical
   diffusion solution used in Koay, Wilkinson and Pulko (2008);
-- centre-node error, RMS error, masked maximum relative error and mass
-  conservation proxy.
+- the experimental parabolic link-plus-stub pulse-state prototype under
+  `tlmpy.experimental`;
+- an experimental estimator-feedback initialization attempt from zero pulses;
+- centre-node error, RMS error, masked maximum relative error, mass conservation
+  proxy and estimator convergence metrics.
 
 Limitations:
 
-- this is Stage 1 case-study infrastructure;
-- it does not implement parabolic TLM pulse scattering;
-- it does not implement the nodal state estimator;
+- this is experimental case-study infrastructure;
+- the selected Gaussian parameterisation has `Ys = 0`, so equal-pulse parabolic
+  TLM is an implementation cross-check against the FTCS reference, not an
+  independent validation;
+- the strict estimator convergence flag is reported and is not required for the
+  conservative case-study pass flag;
+- the estimator feedback is a practical mapping that needs independent review;
 - it is not a full reproduction of the 2008 paper.
 
 See

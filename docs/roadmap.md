@@ -3,8 +3,9 @@
 1. Stub-loaded heterogeneous 2D TLM with spatially varying wave speed.
 2. Quantified dispersion and boundary-characterisation toolkit for 2D TLM.
 3. Reproducible synthetic sensing demo, such as acoustic scattering or radar-style multipath, without overclaiming physical realism.
-4. Experimental parabolic TLM diffusion case-study path, starting from an
-   analytical Gaussian benchmark before any pulse-state estimator implementation.
+4. Experimental parabolic TLM diffusion case-study path, with independent
+   review of the link-plus-stub pulse-state derivation and estimator feedback
+   before any stable API or reproduction claim.
 
 ## v0.2 Stub-Loaded TLM Sprint
 
