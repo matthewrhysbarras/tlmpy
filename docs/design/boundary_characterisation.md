@@ -4,6 +4,9 @@ This design note defines how TLMpy should characterise simple boundary
 terminations before making stronger claims. It does not introduce a new boundary
 condition.
 
+Current benchmark results are summarized in
+[`docs/boundary_characterisation.md`](../boundary_characterisation.md).
+
 ## Current Boundary Model
 
 The v0.1.1 solver exposes a scalar link-line reflection coefficient:
