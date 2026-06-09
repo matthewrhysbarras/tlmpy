@@ -169,6 +169,36 @@ Limitations:
   behavior;
 - it is not a PML test and does not claim full absorption.
 
+### Boundary Coefficient Sweep
+
+This benchmark sweeps the existing scalar boundary reflection coefficient for a
+single normal-incidence source/probe setup.
+
+```bash
+python benchmarks/boundary_coefficient_sweep.py
+```
+
+Output:
+
+- `outputs/benchmarks/boundary_coefficient_sweep.json`
+
+What it measures:
+
+- reflected-to-incident peak-amplitude ratio for coefficients `0.0`, `0.25`,
+  `0.5`, `0.75` and `1.0`;
+- monotonicity of the measured ratio across that coefficient sweep;
+- ratio span between matched-like and reflective endpoints.
+
+Current tolerance:
+
+- `ratio_span >= 0.30`, with monotonic ratios required.
+
+Limitations:
+
+- the metric is tied to this source, probe, grid and time-window setup;
+- it does not replace oblique-incidence or corner characterization;
+- it is not a PML test and does not define general reflection behavior.
+
 ### Dispersion Characterisation
 
 This benchmark records an initial direction-dependent group-speed check for the

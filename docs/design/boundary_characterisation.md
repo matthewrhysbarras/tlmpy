@@ -47,6 +47,12 @@ in fixed incident and reflected time windows for reflective and first-order
 matched terminations. The reported ratio is setup-specific and should not be
 treated as a general reflection coefficient.
 
+`benchmarks/boundary_coefficient_sweep.py` extends that setup to numeric
+boundary coefficients between `0.0` and `1.0`. It records whether the
+setup-specific reflected-to-incident peak ratio increases monotonically across
+the sweep. This still does not characterise oblique incidence, corners or
+broadband behavior.
+
 For each case, record:
 
 - boundary type and coefficient;
