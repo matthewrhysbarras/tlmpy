@@ -64,6 +64,16 @@ analytical Gaussian case and records:
 - a mass-conservation proxy;
 - pass/fail status in a `BenchmarkResult` JSON file.
 
+The figures below reproduce the Gaussian analytical diffusion benchmark style
+only. The numerical curve is TLMpy's finite-difference diffusion reference
+solver, not a parabolic TLM pulse-state solver.
+
+![Initial Gaussian profile](../assets/koay2008_gaussian_diffusion/gaussian_initial_profile.png)
+
+![Centre-node transient](../assets/koay2008_gaussian_diffusion/centre_node_transient.png)
+
+![Relative error](../assets/koay2008_gaussian_diffusion/relative_error.png)
+
 ## What Is Not Implemented
 
 This case study does not yet implement:

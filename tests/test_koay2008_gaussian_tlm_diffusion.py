@@ -15,8 +15,9 @@ SPEC.loader.exec_module(koay2008_gaussian_tlm_diffusion)
 
 def test_koay2008_gaussian_tlm_diffusion_stage1_benchmark(tmp_path):
     output = tmp_path / "koay2008_gaussian_tlm_diffusion.json"
+    figure_dir = tmp_path / "figures"
 
-    result = koay2008_gaussian_tlm_diffusion.run_benchmark(output)
+    result = koay2008_gaussian_tlm_diffusion.run_benchmark(output, figure_dir=figure_dir)
     loaded = BenchmarkResult.from_json(output)
 
     assert output.exists()
@@ -43,3 +44,11 @@ def test_koay2008_gaussian_tlm_diffusion_stage1_benchmark(tmp_path):
     assert loaded.metrics["mass_relative_change"] <= loaded.tolerances["mass_relative_change"]
     assert loaded.metrics["passed"] is True
     assert loaded.artifacts["result_json"] == str(output)
+    for key in [
+        "gaussian_initial_profile",
+        "centre_node_transient",
+        "relative_error",
+    ]:
+        assert key in loaded.artifacts
+        assert Path(loaded.artifacts[key]).exists()
+        assert Path(loaded.artifacts[key]).suffix == ".png"
