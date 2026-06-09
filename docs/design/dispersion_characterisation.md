@@ -74,6 +74,11 @@ two-probe cross-correlation speed estimates along `x`, `y` and diagonal
 directions. This is a first benchmark artifact, not the full wavelength-resolved
 phase/group velocity study described above.
 
+`benchmarks/dispersion_wavelength_sweep.py` adds a small wavelength/source
+bandwidth sweep for `x` and diagonal propagation. It still uses two-probe
+cross-correlation, so it should be read as a coarse group-speed regression rather
+than a phase-velocity dispersion measurement.
+
 ## Open Questions
 
 - Which estimator should be canonical for CI tests?
