@@ -43,19 +43,20 @@ Generated benchmark JSON under `outputs/` is local output and is not committed.
 
 ## Koay-Style Diffusion Case Study
 
-The Koay 2008 Gaussian diffusion case study is Stage 1 work. It compares
-TLMpy's existing finite-difference diffusion reference solver against the
-Gaussian analytical diffusion solution used in the paper's case-study style.
-It includes visible documentation figures and machine-readable benchmark
-metrics.
+The Koay 2008 Gaussian diffusion case study is experimental work. It compares
+the Gaussian analytical diffusion solution with TLMpy's existing
+finite-difference diffusion reference solver and a research-only parabolic
+link-plus-stub pulse-state prototype under `tlmpy.experimental`. It includes
+visible documentation figures and machine-readable benchmark metrics.
 
-It does not implement parabolic TLM pulse scattering, a five-array link-plus-stub
-pulse state, or the nodal state estimator from the paper.
+The estimator feedback is a practical implementation hypothesis based on the
+paper's equations, not a complete root-locus reproduction. It should not be
+treated as a validated implementation of the full paper.
 
 ## Experimental Or Planned Work
 
-- Passive scalar/parabolic TLM pulse equations.
-- Nodal state-estimator implementation.
+- Independent review of the passive scalar/parabolic TLM pulse equations.
+- Stronger validation of the nodal state-estimator feedback.
 - Stub-loaded heterogeneous 2D scalar TLM.
 - Analytical dispersion comparison.
 - Published reference benchmark comparison.
@@ -77,8 +78,8 @@ material interfaces.
 
 ## Why Issue #34 Remains Open
 
-Issue #34 asks for passive scalar stub-loaded node equations. That is still open
-because implementing those equations without a checked derivation would risk
-inventing physics. The next step is a literature-backed derivation note mapping
-published link/stub notation to TLMpy's array conventions, followed by passivity
-and validation tests.
+Issue #34 asks for passive scalar stub-loaded node equations. It remains open
+because the new experimental implementation needs independent review before it
+should be considered resolved. The derivation note maps published link/stub
+notation to TLMpy's array conventions, but stronger passivity and estimator
+validation are still required.

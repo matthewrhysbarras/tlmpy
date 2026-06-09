@@ -108,6 +108,32 @@ Limitations:
 - this checks homogeneous mesh-speed behavior only;
 - it does not validate heterogeneous media, PML or external-solver agreement.
 
+### Koay-Style Gaussian Diffusion
+
+```bash
+python benchmarks/koay2008_gaussian_tlm_diffusion.py
+```
+
+Output:
+
+- `outputs/benchmarks/koay2008_gaussian_tlm_diffusion.json`
+
+What it measures:
+
+- Gaussian analytical diffusion reference behavior in the style of Koay,
+  Wilkinson and Pulko (2008);
+- TLMpy's existing FTCS diffusion reference solver;
+- an experimental parabolic link-plus-stub pulse-state update under
+  `tlmpy.experimental`;
+- a practical estimator-feedback initialization attempt from zero pulses.
+
+Limitations:
+
+- this is not a full reproduction of the 2008 estimator paper;
+- the estimator feedback requires independent derivation review;
+- it does not validate heterogeneous wave media, PML or external-solver
+  agreement.
+
 ### Boundary Reflection
 
 This benchmark records source-free boundary behavior for the current homogeneous
@@ -349,14 +375,16 @@ What it measures:
 
 - the existing FTCS diffusion reference solver against the Gaussian analytical
   diffusion solution used in Koay, Wilkinson and Pulko (2008);
-- centre-node error, RMS error, masked maximum relative error and mass
-  conservation proxy.
+- the experimental parabolic link-plus-stub pulse-state prototype under
+  `tlmpy.experimental`;
+- an experimental estimator-feedback initialization attempt from zero pulses;
+- centre-node error, RMS error, masked maximum relative error, mass conservation
+  proxy and estimator convergence metrics.
 
 Limitations:
 
-- this is Stage 1 case-study infrastructure;
-- it does not implement parabolic TLM pulse scattering;
-- it does not implement the nodal state estimator;
+- this is experimental case-study infrastructure;
+- the estimator feedback is a practical mapping that needs independent review;
 - it is not a full reproduction of the 2008 paper.
 
 See
