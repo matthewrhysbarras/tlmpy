@@ -51,6 +51,11 @@ Candidate references:
   scalar quantity and boundary setup can be matched honestly.
 - Published analytical TLM dispersion or interface results, where available.
 
+The current candidate reference inventory is maintained in
+[`docs/reference_inventory.md`](../reference_inventory.md). Items in that page
+are not benchmark implementations; each still needs a precise equation, source,
+boundary and tolerance mapping before it can become a runnable comparison.
+
 Feasibility notes:
 
 - [Meep comparison feasibility](meep_comparison_feasibility.md)

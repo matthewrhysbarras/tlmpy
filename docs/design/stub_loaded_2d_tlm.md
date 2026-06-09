@@ -66,6 +66,11 @@ model. The design target is:
 The exact scalar stub equations are not yet locked. This document therefore does
 not define a production update rule.
 
+The current reference backlog is tracked in
+[`docs/reference_inventory.md`](../reference_inventory.md). That inventory does
+not remove the requirement for a checked passive scalar formulation before any
+public heterogeneous solver API is implemented.
+
 Reference status:
 
 - Christopoulos, *The Transmission-Line Modeling Method*.

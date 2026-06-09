@@ -82,6 +82,11 @@ than a phase-velocity dispersion measurement.
 Current benchmark results and a documentation plot are summarized in
 [`docs/dispersion_characterisation.md`](../dispersion_characterisation.md).
 
+Candidate analytical dispersion references are tracked in
+[`docs/reference_inventory.md`](../reference_inventory.md). They still need to
+be checked against TLMpy's scalar four-port mesh before they are used to tighten
+benchmark tolerances.
+
 ## Open Questions
 
 - Which estimator should be canonical for CI tests?
