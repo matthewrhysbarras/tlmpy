@@ -232,6 +232,39 @@ Limitations:
 - it does not replace a full dispersion-characterisation notebook or analytical
   TLM dispersion comparison.
 
+### Dispersion Wavelength Sweep
+
+This benchmark sweeps a small set of Ricker-pulse frequencies and propagation
+directions for the existing homogeneous scalar-wave solver.
+
+```bash
+python benchmarks/dispersion_wavelength_sweep.py
+```
+
+Output:
+
+- `outputs/benchmarks/dispersion_wavelength_sweep.json`
+
+What it measures:
+
+- two-probe cross-correlation speed estimates for `x` and diagonal propagation;
+- source frequencies `0.02`, `0.035`, `0.06` and `0.08`;
+- central wavelength in cells, computed as expected mesh speed divided by source
+  frequency;
+- maximum relative speed error and overall speed spread.
+
+Current tolerances:
+
+- `max_relative_error <= 0.10`;
+- `speed_spread_relative <= 0.04`.
+
+Limitations:
+
+- frequency is used as a source-bandwidth/wavelength proxy;
+- cross-correlation is a coarse group-speed estimator;
+- this does not measure phase velocity;
+- this does not prove agreement with an analytical TLM dispersion relation.
+
 ## Reading Results
 
 Benchmark JSON files can be loaded with:
