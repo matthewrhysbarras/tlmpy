@@ -38,6 +38,11 @@ def test_koay2008_gaussian_tlm_diffusion_experimental_benchmark(tmp_path):
         "parabolic_tlm_estimated_from_zero_initialisation",
     ]
     assert loaded.parameters["diffusivity_parameterisation"] == "D = dx**2 / (4 * dt)"
+    assert loaded.parameters["experimental_status"] == (
+        "partial_approximation_not_full_reproduction"
+    )
+    assert loaded.parameters["estimator_feedback_status"] == "practical_hypothesis_not_validated"
+    assert loaded.parameters["parabolic_ys"] == 0.0
     assert loaded.metrics["ftcs_max_relative_rms_error"] <= loaded.tolerances[
         "ftcs_max_relative_rms_error"
     ]
@@ -63,6 +68,8 @@ def test_koay2008_gaussian_tlm_diffusion_experimental_benchmark(tmp_path):
         "estimator_initial_mass_relative_error"
     ]
     assert loaded.metrics["estimator_iterations"] > 0
+    assert loaded.metrics["estimator_converged"] is False
+    assert loaded.metrics["equal_pulse_ftcs_max_abs_difference"] <= 1e-12
     assert loaded.metrics["passed"] is True
     assert loaded.artifacts["result_json"] == str(output)
 

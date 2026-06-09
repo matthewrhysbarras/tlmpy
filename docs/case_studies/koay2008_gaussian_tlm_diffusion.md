@@ -15,7 +15,7 @@ states from prescribed temperature fields. The key distinction for TLMpy is that
 temperature is an observed nodal potential, while the TLM state is represented by
 link and stub pulses.
 
-## Implemented Experimental Node Mapping
+## Experimental Node Mapping
 
 The paper's heat-transfer TLM review uses four link pulses plus one stub pulse
 per 2D node. The nodal potential is computed from incident link and stub pulses
@@ -82,6 +82,16 @@ analytical Gaussian case and records:
 - equal-pulse versus estimated-from-zero initialisation behavior;
 - pass/fail status in a `BenchmarkResult` JSON file.
 
+For this parameter choice the parabolic stub parameter is `Ys = 0`. The
+equal-pulse parabolic mode therefore matches the FTCS reference update in this
+case. That is useful as an implementation cross-check, but it is not independent
+validation of the paper's full estimator method.
+
+The estimator-from-zero mode reports its strict convergence flag explicitly. In
+the current benchmark it remains `false` after 80 iterations, even though the
+resulting initial-field error is small enough for the conservative case-study
+tolerance.
+
 The figures below reproduce the Gaussian analytical diffusion benchmark style
 and compare the current numerical modes. They do not prove full reproduction of
 the nodal-state estimator paper.
@@ -114,5 +124,6 @@ Before claiming full reproduction, the project needs:
 - stronger passivity/conservation analysis for the pulse-state update;
 - comparison against the paper's Figures 7 to 10 with matching plotted
   quantities;
-- validation that the estimator feedback matches the paper's intended dynamics;
+- validation that the estimator feedback matches the paper's intended dynamics
+  and converges under strict tolerances;
 - more than one initial temperature field and timestep/material setting.

@@ -53,6 +53,12 @@ The estimator feedback is a practical implementation hypothesis based on the
 paper's equations, not a complete root-locus reproduction. It should not be
 treated as a validated implementation of the full paper.
 
+For the current Gaussian benchmark parameters, the parabolic stub parameter is
+`Ys = 0`; the equal-pulse parabolic mode is therefore expected to match the FTCS
+reference update. The estimator-from-zero mode reports non-convergence against
+the strict tolerance after 80 iterations, so this remains a partial
+approximation.
+
 ## Experimental Or Planned Work
 
 - Independent review of the passive scalar/parabolic TLM pulse equations.

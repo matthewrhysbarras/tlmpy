@@ -50,7 +50,8 @@ An experimental Koay 2008 Gaussian diffusion case-study benchmark compares the
 analytical Gaussian solution with the existing finite-difference diffusion
 reference solver and a research-only parabolic link-plus-stub pulse-state
 prototype under `tlmpy.experimental`. The estimator feedback is not yet a full
-paper reproduction and remains experimental.
+paper reproduction and remains experimental; the current Gaussian benchmark
+also records that the strict estimator convergence flag remains false.
 
 ## Examples
 

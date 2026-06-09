@@ -4,7 +4,8 @@ This benchmark compares the Section 6 Gaussian analytical diffusion profile with
 
 1. TLMpy's existing FTCS diffusion reference solver;
 2. the experimental parabolic link-plus-stub TLM solver with equal-pulse
-   initialization;
+   initialization, which reduces to the same update as the FTCS reference for
+   this `Ys = 0` Gaussian parameter choice;
 3. the experimental estimator feedback initialized from zero.
 
 The parabolic node update is implemented from the paper's Equations 5--10 and
@@ -272,6 +273,9 @@ def run_benchmark(
     tlm_model = _make_tlm_model(grid, diffusivity, dt)
     tlm_model.set_equal_pulse_temperature(initial)
     tlm_fields = _run_tlm(tlm_model, selected_steps)
+    equal_ftcs_differences = [
+        float(np.max(np.abs(tlm_fields[step] - ftcs_fields[step]))) for step in selected_steps
+    ]
 
     estimated_model = _make_tlm_model(grid, diffusivity, dt)
     estimated_model.set_equal_pulse_temperature(np.zeros(grid.shape))
@@ -300,6 +304,7 @@ def run_benchmark(
     metrics["estimator_final_rms_error"] = history.rms_error[-1]
     metrics["estimator_iterations"] = history.iterations
     metrics["estimator_converged"] = history.converged
+    metrics["equal_pulse_ftcs_max_abs_difference"] = max(equal_ftcs_differences)
     metrics["equal_vs_estimated_initial_rms_ratio"] = (
         metrics["parabolic_tlm_equal_step_10_relative_rms_error"]
         / metrics["parabolic_tlm_estimated_step_10_relative_rms_error"]
@@ -374,6 +379,11 @@ def run_benchmark(
             "selected_steps": list(selected_steps),
             "estimator_ld": 10.32,
             "estimator_max_iterations": 80,
+            "estimator_convergence_tolerance": 1e-5,
+            "estimator_feedback_status": "practical_hypothesis_not_validated",
+            "experimental_status": "partial_approximation_not_full_reproduction",
+            "equal_pulse_mode_status": "Ys=0 case matches the FTCS reference update",
+            "parabolic_ys": tlm_model.ys,
             "source_paper": "Koay, Wilkinson and Pulko (2008), Section 6",
         },
         metrics=metrics,
@@ -384,7 +394,9 @@ def run_benchmark(
             "parabolic link-plus-stub node is implemented, but the estimator "
             "feedback is a practical hypothesis and not a full root-locus "
             "reproduction. Equal-pulse initialization exactly represents the "
-            "initial potential for this Gaussian case."
+            "initial potential for this Gaussian case, and with Ys=0 it matches "
+            "the FTCS reference update rather than providing independent "
+            "validation."
         ),
     )
 

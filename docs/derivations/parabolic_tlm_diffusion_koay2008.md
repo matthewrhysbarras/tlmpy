@@ -38,7 +38,12 @@ The experimental implementation requires:
 - `Ys >= 0`.
 
 For the paper-style Gaussian case with `D = dl**2/(4*dt)`, `Ys = 0` when
-`D = thermal_conductivity/(specific_heat*density)`. The paper's copper-like
+`D = thermal_conductivity/(specific_heat*density)`. The literal
+`Rs = Zs = 1/(Ys*d)` expression is singular at `Ys = 0`, so the implementation
+uses the substituted nodal-potential and scattering equations as the
+zero-admittance stub limit. In that benchmark setting, the equal-pulse
+parabolic update is expected to match the FTCS reference update and is not an
+independent validation of the full estimator paper. The paper's copper-like
 material parameters give `Ys > 0`.
 
 ## Nodal Potential
