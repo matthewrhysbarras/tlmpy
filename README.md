@@ -46,6 +46,8 @@ Validation emphasizes exact `dt`, port-energy conservation, non-periodic boundar
 
 TLMpy includes a lightweight JSON-friendly benchmark result schema in `tlmpy.benchmarking` to support reproducible validation work. Current benchmark scripts cover homogeneous travel time and a source-free boundary behavior case. External solver comparisons remain planned future work.
 
+An experimental Koay 2008 Gaussian diffusion case-study benchmark uses the existing finite-difference diffusion reference solver against an analytical Gaussian solution. It is case-study infrastructure only; parabolic TLM pulse scattering and nodal state estimation are not implemented yet.
+
 ## Examples
 
 Examples live in `examples/`, with a reproducible command gallery in

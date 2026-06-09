@@ -12,6 +12,10 @@ TLMpy is an experimental Python package for scalar 2D TLM-style wave simulation 
 - [TLM reference inventory](reference_inventory.md)
 - [Roadmap](roadmap.md)
 
+Case studies:
+
+- [Koay 2008 Gaussian TLM diffusion](case_studies/koay2008_gaussian_tlm_diffusion.md)
+
 Design notes:
 
 - [Benchmarking against references](design/benchmarking_against_references.md)

@@ -335,6 +335,33 @@ Limitations:
 - this does not measure phase velocity;
 - this does not prove agreement with an analytical TLM dispersion relation.
 
+### Koay 2008 Gaussian Diffusion Case Study
+
+```bash
+python benchmarks/koay2008_gaussian_tlm_diffusion.py
+```
+
+Output:
+
+- `outputs/benchmarks/koay2008_gaussian_tlm_diffusion.json`
+
+What it measures:
+
+- the existing FTCS diffusion reference solver against the Gaussian analytical
+  diffusion solution used in Koay, Wilkinson and Pulko (2008);
+- centre-node error, RMS error, masked maximum relative error and mass
+  conservation proxy.
+
+Limitations:
+
+- this is Stage 1 case-study infrastructure;
+- it does not implement parabolic TLM pulse scattering;
+- it does not implement the nodal state estimator;
+- it is not a full reproduction of the 2008 paper.
+
+See
+[`docs/case_studies/koay2008_gaussian_tlm_diffusion.md`](case_studies/koay2008_gaussian_tlm_diffusion.md).
+
 ## Reading Results
 
 Benchmark JSON files can be loaded with:
