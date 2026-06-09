@@ -202,6 +202,40 @@ Limitations:
 - it does not replace oblique-incidence or corner characterization;
 - it is not a PML test and does not define general reflection behavior.
 
+### Boundary Corner Behaviour
+
+This benchmark records a setup-specific lower-left corner-return metric for
+reflective and first-order matched terminations.
+
+```bash
+python benchmarks/boundary_corner_behaviour.py
+```
+
+Output:
+
+- `outputs/benchmarks/boundary_corner_behaviour.json`
+
+What it measures:
+
+- direct peak amplitude at one probe after a source pulse;
+- later corner-return peak amplitude estimated with a lower-left image-source
+  path length;
+- corner-return-to-direct peak-amplitude ratio for reflective and matched
+  boundaries;
+- the matched ratio relative to the reflective ratio for the same geometry.
+
+Current tolerances:
+
+- `reflective_corner_return_ratio >= 0.30`;
+- `matched_to_reflective_ratio <= 0.35`.
+
+Limitations:
+
+- the metric is tied to this source, probe, grid, corner and time-window setup;
+- it is not a general corner reflection coefficient;
+- it does not characterize oblique incidence or broadband boundary behavior;
+- it is not a PML test and does not claim full absorption.
+
 ### Dispersion Characterisation
 
 This benchmark records an initial direction-dependent group-speed check for the
