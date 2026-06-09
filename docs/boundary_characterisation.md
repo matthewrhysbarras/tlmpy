@@ -87,17 +87,41 @@ Interpretation:
 - this supports regression testing of the existing coefficient API;
 - it does not characterize all waveforms, incidence angles or corner behavior.
 
+## Corner Boundary Behaviour
+
+Command:
+
+```bash
+python benchmarks/boundary_corner_behaviour.py
+```
+
+Current benchmark output:
+
+- reflective corner-return-to-direct ratio: `0.546670`;
+- matched corner-return-to-direct ratio: `0.0904678`;
+- matched-to-reflective ratio: `0.165489`;
+- pass criteria:
+  - `reflective_corner_return_ratio >= 0.30`;
+  - `matched_to_reflective_ratio <= 0.35`.
+
+Interpretation:
+
+- for this lower-left corner source/probe setup, the first-order matched
+  termination produces a lower corner-return peak than the reflective boundary;
+- the return window is estimated from a simple image-source path length through
+  both lower-left boundaries;
+- this is not a general corner reflection coefficient and does not establish
+  broadband or angle-independent boundary behavior.
+
 ## Remaining Gaps
 
 Still uncharacterized:
 
 - oblique-incidence boundary reflection;
-- corner behavior;
 - broadband sensitivity;
 - published analytical boundary-reference comparison.
 
 Tracked follow-up issues:
 
 - #40: oblique-incidence boundary benchmark;
-- #41: corner boundary behaviour benchmark;
 - #43: published TLM or analytical reference benchmark cases.
