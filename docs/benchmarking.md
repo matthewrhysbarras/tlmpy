@@ -74,6 +74,9 @@ loaded = result.from_json("benchmark_result.json")
 The broader benchmark plan is in
 `docs/design/benchmarking_against_references.md`.
 
+Boundary-specific benchmark results are summarized in
+`docs/boundary_characterisation.md`.
+
 ## Implemented Benchmarks
 
 The current benchmark scripts are deterministic, use the NumPy backend, and
